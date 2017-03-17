@@ -4,7 +4,8 @@ using System.Collections;
 
 public class TextController : MonoBehaviour {
 	public Text text;
-	private enum states {welcome, cell_01, cell_02, bed_01, bed_02, door_01, door_02, closet_01, closet_02, closet_03};
+	private enum states {welcome, cell_01, cell_02, bed_01, bed_02, door_01, door_02, closet_01, closet_02, closet_03,
+						narnia_01};
 	private states myState;
 	
 	void Start () {
@@ -22,6 +23,7 @@ public class TextController : MonoBehaviour {
 		else if(myState == states.closet_01)	{Closet_01();}
 		else if(myState == states.closet_02)	{Closet_02();}
 		else if(myState == states.closet_03)	{Closet_03();}
+		else if(myState == states.narnia_01)	{Narnia_01();}
 	}
 	
 	
@@ -70,8 +72,9 @@ public class TextController : MonoBehaviour {
 	void Closet_03(){
 		text.text = "You open the lock and find a portal to Narnia.\nYou go in and live on happily ever after as a talking unicorn. Hell yeah.\n" +
 				"(I got bored writing the story at this point. Hope you liked the game, though.)\n\n" +
-				"[Press P to play again.]";
+				"[Press Enter to Enter, P to play again.]";
 		if(Input.GetKeyDown(KeyCode.P))		{ myState = states.welcome;}
+		if(Input.GetKeyDown(KeyCode.Return)){ myState = states.narnia_01;}
 	}
 	
 	void Bed_01(){
@@ -86,6 +89,11 @@ public class TextController : MonoBehaviour {
 		if(Input.GetKeyDown (KeyCode.R))	{ myState = states.cell_02;}
 	}
 	
+	void Narnia_01(){
+		text.text = "Welcome to Narnia.\n\n" +
+					"[Press P to play again.]";
+		if(Input.GetKeyDown)(KeyCode.P))	{ myState = states.welcome;}
+	}
 }
 
 	
